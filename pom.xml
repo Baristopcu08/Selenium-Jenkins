@@ -102,6 +102,11 @@
       <artifactId>browserstack-local-java</artifactId>
       <version>${browserstack.local.version}</version>
     </dependency>
+    <dependency>
+      <groupId>io.github.bonigarcia</groupId>
+      <artifactId>webdrivermanager</artifactId>
+      <version>5.3.2</version>
+    </dependency>
   </dependencies>
 
   <build>

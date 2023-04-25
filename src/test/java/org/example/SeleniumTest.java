@@ -1,17 +1,23 @@
 package org.example;
 
 import java.util.Optional;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.devtools.DevTools;
 import org.openqa.selenium.devtools.v99.fetch.Fetch;
 
 public class SeleniumTest {
     @Test
     public void mockAPISelenium() {
-        System.setProperty("webdriver.chrome.driver", "/Users/gurudattsa/IdeaProjects/Selenium4-test/driver/chromedriver");
-        ChromeDriver driver = new ChromeDriver();
+        WebDriverManager.chromedriver().setup();
+        ChromeOptions options=new ChromeOptions();
+        options.addArguments("--remote-allow-origins=*");
+        options.addArguments("--start-maximized");
+        ChromeDriver driver = new ChromeDriver(options);
         DevTools devtools = driver.getDevTools();
         devtools.createSession();
         devtools.send(Fetch.enable(Optional.empty(), Optional.empty()));
